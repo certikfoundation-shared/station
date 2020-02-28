@@ -1,6 +1,6 @@
 import axios from 'axios'
 import socketCluster, { SCClientSocket } from 'socketcluster-client'
-import { isProduction } from '../helpers/env'
+import { isProduction, isLocal } from '../helpers/env'
 
 interface Chain {
   fcd: string
@@ -11,12 +11,13 @@ const Chain = {
   COLUMBUS: 'columbus-3',
   VODKA: 'vodka-0001',
   SOJU: 'soju-0013',
-  FITZ: 'fitz'
+  FITZ: 'fitz',
+  LOCAL: 'local'
 }
 
-export const ChainList = [Chain.COLUMBUS, Chain.VODKA, Chain.SOJU].concat(
-  !isProduction ? [Chain.FITZ] : []
-)
+export const ChainList = [Chain.COLUMBUS, Chain.VODKA, Chain.SOJU]
+  .concat(!isProduction ? [Chain.FITZ] : [])
+  .concat(isLocal ? [Chain.LOCAL] : [])
 
 const Chains: { [slug: string]: Chain } = {
   [Chain.COLUMBUS]: {
@@ -34,6 +35,10 @@ const Chains: { [slug: string]: Chain } = {
   [Chain.FITZ]: {
     fcd: 'https://fitz.terra.money:5562',
     socket: { hostname: 'fcd.terra.dev', port: 443, secure: true }
+  },
+  [Chain.LOCAL]: {
+    fcd: 'https://local.terra.money:0000',
+    socket: { hostname: 'local.terra.money', port: 443, secure: true }
   }
 }
 
