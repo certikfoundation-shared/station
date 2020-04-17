@@ -1,6 +1,5 @@
 import React from 'react'
-import { Filter, Point } from '@terra-money/use-station'
-import { Variation as VariationProps, PriceUI } from '@terra-money/use-station'
+import { PriceUI, Filter, Point } from '@terra-money/use-station'
 import { usePrice, format } from '@terra-money/use-station'
 import c from 'classnames'
 import { helpers } from 'chart.js'
@@ -41,8 +40,7 @@ const Price = ({ actives }: { actives: string[] }) => {
       </Select>
     )
 
-  type Header = { price: number; variation: VariationProps }
-  const renderHeader = ({ price, variation }: Header) => (
+  const renderHeader = ({ price, variation }: PriceUI) => (
     <header className={s.header}>
       <Number fontSize={24}>{format.decimal(String(price))}</Number>
       <Variation variation={variation} showPercent />

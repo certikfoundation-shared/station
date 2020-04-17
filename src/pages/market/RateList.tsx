@@ -45,13 +45,23 @@ const RateList = ({ denoms }: { denoms: string[] }) => {
     message ? (
       <NotAvailable>{message}</NotAvailable>
     ) : (
-      <ul>{list?.map(renderRow)}</ul>
+      <>
+        {renderFilter()}
+        <ul>{list?.map(renderRow)}</ul>
+      </>
     )
 
   return (
     <Card title={title} fixedHeight>
-      {message ? <NotAvailable>{message}</NotAvailable> : renderFilter()}
-      {error ? <ErrorComponent /> : loading ? <Loading /> : ui && render(ui)}
+      {message ? (
+        <NotAvailable>{message}</NotAvailable>
+      ) : error ? (
+        <ErrorComponent />
+      ) : loading ? (
+        <Loading />
+      ) : (
+        ui && render(ui)
+      )}
     </Card>
   )
 }
