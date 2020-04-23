@@ -2,6 +2,7 @@ import { Dictionary } from 'ramda'
 
 // prettier-ignore
 const list: Dictionary<string> = {
+  terravaloper15urq2dtp9qce4fyc85m6upwm9xul30496sgk37: 'hello@chorus.one',
   terravaloper16tc3c9u6yj5uuhru32pvs0pahfwraurpypz7vj: 'office@block42.tech',
   terravaloper1audgfvmgt0js54p3s8kj3r40uwej6vy2tv6rrw: 'info@mitera.net',
   terravaloper1aw0znxtlq0wrayyz7wppz3qnw94hfrmnnrcxja: 'support@rockx.com',
